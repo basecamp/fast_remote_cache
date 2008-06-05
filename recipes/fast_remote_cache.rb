@@ -21,7 +21,7 @@ namespace :fast_remote_cache do
     in a team environment, multiple individuals may deploy using this
     strategy.
   DESC
-  task :make_cache_writable, :except => { :no_release => true } do
+  task :make_writable, :except => { :no_release => true } do
     cache = File.join(shared_path, fetch(:repository_cache, "cached-copy"))
     sudo "chmod -R g+w #{cache}; true"
   end
@@ -29,4 +29,4 @@ namespace :fast_remote_cache do
 end
 
 after "deploy:setup", "fast_remote_cache:setup"
-before "deploy:update_code", "fast_remote_cache:make_cache_writable"
+before "deploy:update_code", "fast_remote_cache:make_writable"
