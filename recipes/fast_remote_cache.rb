@@ -16,17 +16,6 @@ namespace :fast_remote_cache do
     end
   end
 
-  desc <<-DESC
-    Make sure the cached-copy is group writable. This ensures that when used
-    in a team environment, multiple individuals may deploy using this
-    strategy.
-  DESC
-  task :make_writable, :except => { :no_release => true } do
-    cache = File.join(shared_path, fetch(:repository_cache, "cached-copy"))
-    sudo "chmod -R g+w #{cache}; true"
-  end
-
 end
 
 after "deploy:setup", "fast_remote_cache:setup"
-before "deploy:update_code", "fast_remote_cache:make_writable"
