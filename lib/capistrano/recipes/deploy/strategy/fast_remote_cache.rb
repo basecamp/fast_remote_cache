@@ -14,6 +14,10 @@ class Capistrano::Deploy::Strategy::FastRemoteCache < Capistrano::Deploy::Strate
     upload(File.join(File.dirname(__FILE__), "utilities", "copy.rb"), File.join(bin_path, "copy.rb"))
   end
 
+  def prepare!
+    update_repository_cache
+  end
+
   private
 
     def bin_path
