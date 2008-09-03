@@ -1,6 +1,24 @@
+# ---------------------------------------------------------------------------
+# A simple copy script for doing hard links and symbolic links instead of
+# explicit copies. Some OS's will already have a utility to do this, but
+# some won't; this file suffices in either case.
+#
+# Usage: ruby copy.rb <source> <target> <exclude> ...
+#
+# The <source> directory is recursively descended, and hard links to all of
+# the files are created in corresponding locations under <target>. Symbolic
+# links in <source> map to symbolic links in <target> that point to the same
+# destination.
+#
+# All arguments after <target> are taken to be exclude patterns. Any file
+# or directory in <source> that matches any of those patterns will be
+# skipped, and will thus not be present in <target>.
+# ---------------------------------------------------------------------------
+# This file is distributed under the terms of the MIT license by 37signals,
+# LLC, and is copyright (c) 2008 by the same. See the LICENSE file distributed
+# with this file for the complete text of the license.
+# ---------------------------------------------------------------------------
 require 'fileutils'
-
-verbose = false
 
 from = ARGV.shift or abort "need source directory"
 to   = ARGV.shift or abort "need target directory"

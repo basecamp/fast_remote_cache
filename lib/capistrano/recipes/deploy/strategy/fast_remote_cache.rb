@@ -1,3 +1,14 @@
+# ---------------------------------------------------------------------------
+# This implements a specialization of the standard Capistrano RemoteCache
+# deployment strategy. The most significant difference between this strategy
+# and the RemoteCache is the way the cache is copied to the final release
+# directory: it uses the bundled "copy.rb" script to use hard links to the
+# files instead of actually copying, so the copy stage is much, much faster.
+# ---------------------------------------------------------------------------
+# This file is distributed under the terms of the MIT license by 37signals,
+# LLC, and is copyright (c) 2008 by the same. See the LICENSE file distributed
+# with this file for the complete text of the license.
+# ---------------------------------------------------------------------------
 require 'capistrano/recipes/deploy/strategy/remote_cache'
 
 class Capistrano::Deploy::Strategy::FastRemoteCache < Capistrano::Deploy::Strategy::RemoteCache

@@ -1,3 +1,11 @@
+# ---------------------------------------------------------------------------
+# This is a recipe definition file for Capistrano. The tasks are documented
+# below.
+# ---------------------------------------------------------------------------
+# This file is distributed under the terms of the MIT license by 37signals,
+# LLC, and is copyright (c) 2008 by the same. See the LICENSE file distributed
+# with this file for the complete text of the license.
+# ---------------------------------------------------------------------------
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
 
 namespace :fast_remote_cache do
