@@ -34,6 +34,10 @@ Lastly, if you want to exclude certain directories or files from being deployed,
 
 The copy_exclude array can also include glob patterns, if you want to get tricky.
 
+Before deploying, you need to setup fast_remote_cache.  The necessary setup steps are completed after you run deploy:setup or, if you'd prefer to simply setup the fast_remote_cache strategy, run:
+
+  cap fast_remote_cache:setup
+  
 == Tips
 
 For the fastest possible deploys:
