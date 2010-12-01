@@ -41,6 +41,7 @@ For the fastest possible deploys:
 * Always deploy as the same user. If you're part of a team where everyone can (and does) deploy, create a new user (e.g., "deploy") and set it up so that your team can all log in as this user. Make sure this user also has read access to your source code repository.
 * Avoid sudo if at all possible. set(:use_sudo, false), and then make sure that the deploy user has sufficient permissions to start and stop the mongrels, write to the necessary directories, etc.
 * Disable the "group_writable" setting: set(:group_writable, false). This is only necessary when you have multiple users deploying.
+* Disable the "normalize_asset_timestamps" setting: set(:normalize_asset_timestamps, false). This setting is not necessary when deploying to a single server, or when the SCM is configured to preserve commit timestamps on checkout.
 * Don't include Rails (or other large libraries) in your application. Yes, it is convenient to include them, but they bloat your app and make checkouts and copies much slower. You have to balance convenience in development versus speed of deployment. Find a compromise that works for you.
 
 == License
